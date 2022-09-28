@@ -3,11 +3,11 @@ import React from "react";
 
 
 
-function ColumnHeaders(props) {
+function ColumnHeaders() {
   const columnNames = ['name', 'rebs', 'asts', 'pts']
   const arr = [];
   for (const column of columnNames) {
-    arr.push(<span className="stat-column">{column}</span>);
+    arr.push(<span className="stat-column" key={column}>{column}</span>);
   }
   return (
     <>

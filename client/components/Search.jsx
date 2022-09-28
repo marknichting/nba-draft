@@ -1,4 +1,5 @@
-import React, { useState }  from "react";
+import React  from "react";
+import PropTypes from 'prop-types';
 
 
  function Search(props) {
@@ -9,7 +10,10 @@ import React, { useState }  from "react";
       <button onClick={props.search}> Search </button>
     </div>
   );
-};
+}
 
+Search.propTypes = {
+  search: PropTypes.func,
+}
 
 export default Search;
