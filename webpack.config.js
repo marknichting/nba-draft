@@ -9,7 +9,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    // publicPath: "/dist/",
   },
   plugins: [
     new HTMLPlugin({
@@ -26,7 +27,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
-          "presets": ["@babel/preset-react", "@babel/env"]
+          "presets": ["@babel/preset-env","@babel/preset-react" ]
         }
       },
       {
@@ -34,5 +35,22 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       }
     ]
+  },
+  devtool: 'inline-source-map',
+  devServer: {
+    static: './dist',
+    hot: true,
+    open: true,
+    compress: true,
+    // host?
+    proxy: {
+      '/api': 'http://localhost:3000'
+    },
+    // do you need to assing a port? NO default is 8080. you can if you want to though using port property
+    // port: 8080,
+  },
+  // doesn't show performance warnings -- ultimately should address
+  performance: {
+    hints: false
   }
 }

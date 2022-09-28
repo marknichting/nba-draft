@@ -8,11 +8,13 @@ const controller = require('./controller.js');
 // routes
 //handles route for request to API
 app.get('/playerStats', controller.getPlayerStats,(req, res) => {
-  res.status(200).send('hiya there');
+  res.status(200).send(res.locals.stats);
 })
-// app.get('http://localhost:8080/playerStats', controller.getPlayerStats, (req, res) => {
-//   res.status(200).send('hiya there');
-// })
+
+app.get('/api/playerStats', controller.getPlayerStats, (req, res) => {
+  console.log('this is from dev server proxy');
+  res.status(200).send(res.locals.stats);
+})
 
 // handles request route for initial html page
 app.get('/', (req, res) => {

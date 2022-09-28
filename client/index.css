@@ -2,4 +2,21 @@
 
 body{
   background-color: rgb(32, 32, 32);
+  font-family: sans-serif;
+}
+
+
+.stat-container{
+  background-color: rgba(127, 255, 212, 0.502);
+  margin-top: 48px;
+}
+
+.headers{
+  display: flex;
+  gap: 8px;
+
+}
+.stat-column{
+  background-color: aquamarine;
+  padding: 8px 12px;
 }

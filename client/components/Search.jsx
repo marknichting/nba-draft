@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState }  from "react";
 
 
-export default function Search(props) {
+ function Search(props) {
  
   return (
     <div>
-      <input type='text'></input>
+      <input type='text' id="search-bar"></input>
       <button onClick={props.search}> Search </button>
     </div>
   );
 };
+
+
+export default Search;
