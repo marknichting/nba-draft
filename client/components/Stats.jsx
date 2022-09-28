@@ -1,6 +1,8 @@
 import React from "react";
 import Row from './Row.jsx';
 import ColumnHeaders from "./ColumnHeaders.jsx";
+import PropTypes from 'prop-types';
+
 
 function Stats(props) {
   console.log('player stats: ', props.playerStats)
@@ -21,6 +23,8 @@ function Stats(props) {
 
 }
 
-
+Stats.propTypes = {
+  playerStats: PropTypes.object,
+}
 
 export default Stats;
