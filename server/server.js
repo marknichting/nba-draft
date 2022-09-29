@@ -41,7 +41,13 @@ app.post('/api/save', controller.saveToDB ,(req, res) => {
 })
 
 
+// route for getting the players that have been saved to the team
+// production
 
+// dev
+app.get('/api/getTeam', controller.getTeam, (req, res) => {
+  res.status(200).json(res.locals.team);
+})
 
 
 

@@ -22,6 +22,8 @@ function Stats(props) {
 Stats.propTypes = {
   playerStats: PropTypes.object,
   save: PropTypes.func,
+  columnNames: PropTypes.array
+
 }
 
 export default Stats;

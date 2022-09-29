@@ -37,6 +37,11 @@ h1{
 
 .team-container{
   background-color: rgba(197, 0, 211, 0.499);
-  height: 48px;
-  width: 90%;
+  height: fit-content;
+  width: fit-content;
+}
+
+.team-column{
+  background-color: rgb(218, 0, 233);
+  padding: 4px 8px;
 }

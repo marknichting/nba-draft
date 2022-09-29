@@ -1,4 +1,4 @@
-import React, { useState }  from "react";
+import React, { useState, useEffect }  from "react";
 import Search from "./Search.jsx"
 import Stats from './Stats.jsx';
 import Team from './Team.jsx';
@@ -8,7 +8,13 @@ import Team from './Team.jsx';
 function App() {
   // define state
   let [playerStats, changeStats] = useState({});
-  let [saved, changeSaved ] = useState([]);
+  let [savedPlayers, changeSaved ] = useState([]);
+  const columnNames = ['name', 'position', 'team', 'games_played', 'min', 'fgm', 'fga', 'fg3m', 'ftm', 'fta', 'reb', 'ast', 'stl', 'blk', 'turnover', 'pts', 'fg_pct', 'ft_pct'];
+
+  useEffect(() => {
+    getTeam();
+  }, [savedPlayers.length])
+
 
   function search() {
     console.log('search function invoked!')
@@ -32,7 +38,8 @@ function App() {
         }
         cleanedData.name = cleanedData.first_name + ' ' + cleanedData.last_name;
         delete cleanedData.first_name, delete cleanedData.last_name;
-        console.log('cleaned ',cleanedData)
+        // console.log('cleaned ',cleanedData)
+        for(const key in cleanedData){console.log(key)}
         changeStats(cleanedData);
       })
       .catch(err => console.log(err))
@@ -48,17 +55,30 @@ function App() {
       },
       body: JSON.stringify(playerStats)
     })
-      .then(res => console.log('successful save: ', res))
+      .then(res => {
+        console.log('successful save: ')
+        getTeam();
+      })
       .catch(err => console.log(err))
-    
+  }
+
+  function getTeam() {
+    fetch('api/getTeam')
+      .then(res => res.json())
+      .then(data => {
+        // change state 
+        changeSaved(data);
+        console.log('state updated!')
+      })
+      .catch(err => console.log(err));
   }
 
   return (
     <div>
       <h1>NBA Player Stats</h1>
       <Search search={search} />
-      <Stats playerStats={playerStats} save={save}/>
-      <Team savedPlayers={saved}/>
+      <Stats playerStats={playerStats} save={save} columnNames={columnNames} />
+      <Team savedPlayers={savedPlayers} playerStats={playerStats} columnNames={columnNames}/>
     </div>
   )
   
