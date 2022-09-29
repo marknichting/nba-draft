@@ -38,8 +38,7 @@ function App() {
         }
         cleanedData.name = cleanedData.first_name + ' ' + cleanedData.last_name;
         delete cleanedData.first_name, delete cleanedData.last_name;
-        // console.log('cleaned ',cleanedData)
-        for(const key in cleanedData){console.log(key)}
+        console.log('cleaned ',cleanedData)
         changeStats(cleanedData);
       })
       .catch(err => console.log(err))
@@ -68,7 +67,7 @@ function App() {
       .then(data => {
         // change state 
         changeSaved(data);
-        console.log('state updated!')
+        // console.log('state updated!')
       })
       .catch(err => console.log(err));
   }
