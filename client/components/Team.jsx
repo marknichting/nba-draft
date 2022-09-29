@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 
 
 function Team(props) {
+  let keys = -1;
   const elArr = [];
   for (const key of props.columnNames) {
     elArr.push(<th className="table-head" key={key}>{key}</th>)
   }
 
-  console.log('Team: ', props.savedPlayers)
+  // console.log('Team: ', props.savedPlayers)
   // create rows and fill out columns for each player
   const savedPlayers = props.savedPlayers;
   const rows = [];
@@ -16,18 +17,17 @@ function Team(props) {
     for (let i = 0; i < savedPlayers.length; i++ ) {
       const data = [];
       for (const key in savedPlayers[i]) {
-        data.push(<td className="team-column">{savedPlayers[i][key]}</td>)
+        data.push(<td className="team-column" key={keys--}>{savedPlayers[i][key]}</td>)
       }
-      rows.push(<tr className="team-data">{data}</tr>);
+      rows.push(<tr className="team-data" key={keys--}>{data}</tr>);
     }
   }
 
   return (
     <>
       <h2 className="team-header">Your Team</h2>
-      <div className="team-container">
-        <table>
-          <thead>
+        <table className="team-table">
+          <thead className="team-head">
             <tr>
               {elArr}    
             </tr>
@@ -36,7 +36,6 @@ function Team(props) {
             {rows}
           </tbody>
       </table>
-      </div>
     </>
   )
 }

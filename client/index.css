@@ -8,40 +8,35 @@ body{
 h1{
   color: white;
 }
-.result-header{
+.search-header{
   margin-top: 48px;
   color: aquamarine;
 }
-.stat-container{
+.search-table{
   background-color: rgba(127, 255, 212, 0.502);
-  padding-bottom: 24px;
-  width: fit-content;
-
-  display: grid;
-  grid-template-columns: repeat(18, 1fr);
+  min-width: 960px;
+  min-height: 60px;
 }
-
-.stat-column{
+.search-head{
   background-color: aquamarine;
-  padding: 8px 12px; 
 }
 
-.player-stat{
-    padding: 8px 12px; 
-}
 
 
 .team-header{
   color: rgb(218, 0, 233);
 }
 
-.team-container{
+.team-table{
   background-color: rgba(197, 0, 211, 0.499);
   height: fit-content;
   width: fit-content;
 }
 
-.team-column{
+.team-head{
+  background-color: rgb(218, 0, 233);
+}
+/* .team-column{
   background-color: rgb(218, 0, 233);
   padding: 4px 8px;
-}
+} */
