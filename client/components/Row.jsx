@@ -3,19 +3,22 @@ import PropTypes from 'prop-types';
 
 
 
-function Row(props) {
-  // const arr = [];
-  // for (const key in props.playerStats) {
-  //   arr.push(<span></span>)
-  // }
+function Row(props) {  
+  const arr = [];
+  for (const key in props.playerStats) {
+      arr.push(<span className="player-stat" key={key+1}>{props.playerStats[key]}</span>)
+  }
 
   return (
-    <div>hello</div>
+    <>
+      {arr}
+    </>
   )
 }
 
 Row.propTypes = {
   playerStats: PropTypes.object,
+  exclude: PropTypes.object,
 }
 
 export default Row;

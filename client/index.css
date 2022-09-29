@@ -5,18 +5,38 @@ body{
   font-family: sans-serif;
 }
 
-
+h1{
+  color: white;
+}
+.result-header{
+  margin-top: 48px;
+  color: aquamarine;
+}
 .stat-container{
   background-color: rgba(127, 255, 212, 0.502);
-  margin-top: 48px;
+  padding-bottom: 24px;
+  width: fit-content;
+
+  display: grid;
+  grid-template-columns: repeat(18, 1fr);
 }
 
-.headers{
-  display: flex;
-  gap: 8px;
-
-}
 .stat-column{
   background-color: aquamarine;
-  padding: 8px 12px;
+  padding: 8px 12px; 
+}
+
+.player-stat{
+    padding: 8px 12px; 
+}
+
+
+.team-header{
+  color: rgb(218, 0, 233);
+}
+
+.team-container{
+  background-color: rgba(197, 0, 211, 0.499);
+  height: 48px;
+  width: 90%;
 }

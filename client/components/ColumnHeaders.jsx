@@ -1,10 +1,14 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 
 
 
-function ColumnHeaders() {
-  const columnNames = ['name', 'rebs', 'asts', 'pts']
+function ColumnHeaders(props) {
+  const columnNames = [];
+  for (const key in props.playerStats) {
+      columnNames.push(key);
+  }
   const arr = [];
   for (const column of columnNames) {
     arr.push(<span className="stat-column" key={column}>{column}</span>);
@@ -16,6 +20,10 @@ function ColumnHeaders() {
   )
 }
 
+ColumnHeaders.propTypes = {
+  playerStats: PropTypes.object,
+  exclude: PropTypes.object,
+}
 
 export default ColumnHeaders;
 
