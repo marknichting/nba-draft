@@ -33,7 +33,7 @@ controller.getPlayerStats = function (req, mwRes, next) {
 controller.saveToDB = function (req, res,next) {
   console.log('inside of saveToDB middleware');
   // add something to DB
-  console.log(req.body);
+  // console.log(req.body);
   const columns = [];
   const values = [];
   for (const key in req.body) {
@@ -43,10 +43,23 @@ controller.saveToDB = function (req, res,next) {
   const query = `INSERT INTO saved_players  (name,position,team,games_played,min,fgm,fga,fg3m,ftm,fta,reb,ast,stl,blk,turnover,pts,fg_pct,ft_pct) VALUES ('LeBron James','F','Los Angeles Lakers',53,'37:08',11.34,21.72,2.79,4.42,5.81,8.17,6.34,1.36,1.04,3.51,29.89,0.522,0.76) `
   db.query(query, (err, result) => {
     if (err) next(err);
-    console.log(result);
+    // console.log(result);
     next()
   })
 }
+
+
+
+controller.getTeam = function (req, res, next) {
+  const query = 'SELECT * FROM saved_players';
+  db.query(query, (err, team)=> {
+    if (err) next({err: err});
+    if (!team) next({err: 'no saved players in database' });
+    res.locals.team = team.rows;
+    next();
+  })
+}
+
 
 
 // controller.get2021Players = function (req, mwRes, next) {

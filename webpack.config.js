@@ -1,5 +1,6 @@
 const path = require('path');
 const HTMLPlugin = require('html-webpack-plugin');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 
 module.exports = {
@@ -18,6 +19,7 @@ module.exports = {
       template: path.resolve(__dirname, '/client/template.html'),
       filename: 'index.html'
     }),
+    new NodePolyfillPlugin(),
   ],
 
   module: {
@@ -52,5 +54,5 @@ module.exports = {
   // doesn't show performance warnings -- ultimately should address
   performance: {
     hints: false
-  }
+  },
 }
