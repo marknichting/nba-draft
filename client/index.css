@@ -14,8 +14,10 @@ h1{
 }
 .search-table{
   background-color: rgba(127, 255, 212, 0.502);
-  min-width: 960px;
+  min-width: 1180px;
   min-height: 60px;
+  border-collapse: collapse;
+
 }
 .search-head{
   background-color: aquamarine;
@@ -24,6 +26,7 @@ h1{
 
 
 .team-header{
+  margin-top: 60px;
   color: rgb(218, 0, 233);
 }
 
@@ -31,10 +34,16 @@ h1{
   background-color: rgba(197, 0, 211, 0.499);
   height: fit-content;
   width: fit-content;
+  border-collapse: collapse;
 }
 
 .team-head{
   background-color: rgb(218, 0, 233);
+}
+
+.team-column, .search-column{
+  text-align: center;
+  padding: 2px 6px;
 }
 /* .team-column{
   background-color: rgb(218, 0, 233);

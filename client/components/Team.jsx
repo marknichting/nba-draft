@@ -12,10 +12,16 @@ function Team(props) {
   // console.log('Team: ', props.savedPlayers)
   // create rows and fill out columns for each player
   const savedPlayers = props.savedPlayers;
+ 
   const rows = [];
   if (savedPlayers[0] !== undefined) {
     for (let i = 0; i < savedPlayers.length; i++ ) {
       const data = [];
+      data.push(<td key={keys--}><button onClick={() => {
+        let name =savedPlayers[i].name;
+        console.log( name)
+        props.deletePlayer(name);
+      }}>delete</button></td>)
       for (const key in savedPlayers[i]) {
         data.push(<td className="team-column" key={keys--}>{savedPlayers[i][key]}</td>)
       }
@@ -29,6 +35,7 @@ function Team(props) {
         <table className="team-table">
           <thead className="team-head">
             <tr>
+              <th>action</th>
               {elArr}    
             </tr>
           </thead>
@@ -44,7 +51,8 @@ function Team(props) {
 Team.propTypes = {
   savedPlayers: PropTypes.array,
   playerStats: PropTypes.object,
-  columnNames: PropTypes.array
+  columnNames: PropTypes.array,
+  deletePlayer: PropTypes.func
 }
 
 export default Team;

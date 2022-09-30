@@ -13,7 +13,7 @@ function Stats(props) {
   }
   const player = []
   for (const stat in props.playerStats) {
-    player.push(<td key={keys++}>{props.playerStats[stat]}</td>)
+    player.push(<td key={keys++} className="search-column">{props.playerStats[stat]}</td>)
   }
   return (
     <>
