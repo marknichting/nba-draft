@@ -43,7 +43,7 @@ controller.saveToDB = function (req, res,next) {
   console.log(values)
   const query = `INSERT INTO saved_players  (name,position,team,games_played,min,fgm,fga,fg3m,ftm,fta,reb,ast,stl,blk,turnover,pts,fg_pct,ft_pct) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11,$12, $13, $14, $15, $16, $17, $18) `
   // 'LeBron James','F','Los Angeles Lakers',53,'37:08',11.34,21.72,2.79,4.42,5.81,8.17,6.34,1.36,1.04,3.51,29.89,0.522,0.76
-  db.query(query, values, (err, result) => {
+  db.query(query, values, (err) => {
     if (err) next(err);
     // console.log(result);
     next()
@@ -62,7 +62,15 @@ controller.getTeam = function (req, res, next) {
   })
 }
 
-
+controller.deletePlayer = function (req, res, next) {
+  // console.log(req.query)
+  const name = [req.query.player];
+  const query = 'DELETE FROM saved_players WHERE name = $1';
+  db.query(query, name, (err, ) => {
+    if (err) next({ err: err });
+    next();  
+  })
+}
 
 // controller.get2021Players = function (req, mwRes, next) {
 //   axios

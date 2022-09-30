@@ -11,45 +11,51 @@ app.use(express.json());
 //handles route for request to API
 // production route handler
 // app.get('/playerStats', controller.getPlayerStats,(req, res) => {
-//   res.status(200).send(res.locals.stats);
-// })
-
-// dev route handler
-app.get('/api/playerStats', controller.getPlayerStats, (req, res) => {
-  console.log('this is from dev server proxy');
-  res.status(200).send(res.locals.stats);
-})
-
-// handles request route for initial html page
-app.get('/', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname,'../dist/index.html'));
-})
-
-// handles html pages request for bundle.js file
-app.get('/bundle.js', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, '../dist/bundle.js'));
-})
-
-
-// production route
-// app.post('/save', controller.saveToDB ,(req, res) => {
-//   res.status(200).send('dont know what to send yet :)')
-// })
-// dev route
-app.post('/api/save', controller.saveToDB ,(req, res) => {
-  res.status(200).send('dont know what to send yet :)')
-})
-
-
-// route for getting the players that have been saved to the team
-// production
-
-// dev
-app.get('/api/getTeam', controller.getTeam, (req, res) => {
-  res.status(200).json(res.locals.team);
-})
-
-
+  //   res.status(200).send(res.locals.stats);
+  // })
+  
+  // dev route handler
+  app.get('/api/playerStats', controller.getPlayerStats, (req, res) => {
+    console.log('this is from dev server proxy');
+    res.status(200).send(res.locals.stats);
+  })
+  
+  // handles request route for initial html page
+  app.get('/', (req, res) => {
+    res.status(200).sendFile(path.join(__dirname,'../dist/index.html'));
+  })
+  
+  // handles html pages request for bundle.js file
+  app.get('/bundle.js', (req, res) => {
+    res.status(200).sendFile(path.join(__dirname, '../dist/bundle.js'));
+  })
+  
+  
+  // production route
+  // app.post('/save', controller.saveToDB ,(req, res) => {
+    //   res.status(200).send('dont know what to send yet :)')
+    // })
+    // dev route
+    app.post('/api/save', controller.saveToDB ,(req, res) => {
+      res.status(200).send('dont know what to send yet :)')
+    })
+    
+    
+    // route for getting the players that have been saved to the team
+    // production
+    
+    // dev
+    app.get('/api/getTeam', controller.getTeam, (req, res) => {
+      res.status(200).json(res.locals.team);
+    })
+    
+    
+    // delete player from the team
+    // production
+    // dev
+    app.post('/api/delete', controller.deletePlayer, (req, res) => {
+      res.status(200).send('player deleted')
+    })
 
 
 // error not found

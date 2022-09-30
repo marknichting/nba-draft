@@ -54,7 +54,7 @@ function App() {
       },
       body: JSON.stringify(playerStats)
     })
-      .then(res => {
+      .then(() => {
         console.log('successful save: ')
         getTeam();
       })
@@ -71,13 +71,28 @@ function App() {
       })
       .catch(err => console.log(err));
   }
+  function deletePlayer(player) {
+    fetch(`api/delete?player=${player}`, {
+      method: 'POST',
+    })
+      .then(() => {
+        console.log('player deleted');
+        getTeam();
+    })
+    .catch(err => console.log(err));
+  }
 
   return (
     <div>
       <h1>NBA Player Stats</h1>
       <Search search={search} />
       <Stats playerStats={playerStats} save={save} columnNames={columnNames} />
-      <Team savedPlayers={savedPlayers} playerStats={playerStats} columnNames={columnNames}/>
+      <Team
+        savedPlayers={savedPlayers}
+        playerStats={playerStats}
+        columnNames={columnNames}
+        deletePlayer={deletePlayer}
+      />
     </div>
   )
   
