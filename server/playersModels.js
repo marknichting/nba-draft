@@ -1,6 +1,6 @@
 const { Pool } = require('pg');
 
-const url =  process.env.postgres_URI;
+const url = process.env.postgres_URI;
 
 const pool = new Pool({ connectionString: url, });
 
