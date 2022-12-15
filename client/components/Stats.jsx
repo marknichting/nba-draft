@@ -1,7 +1,4 @@
-// import React, {useState} from "react";
 import React from "react";
-// import Row from './Row.jsx';
-// import ColumnHeaders from "./ColumnHeaders.jsx";
 import PropTypes from 'prop-types';
 
 
@@ -41,7 +38,6 @@ Stats.propTypes = {
   playerStats: PropTypes.object,
   save: PropTypes.func,
   columnNames: PropTypes.array
-
 }
 
 export default Stats;
