@@ -1,5 +1,6 @@
 const { Pool } = require('pg');
 
+require('dotenv').config();
 const url = process.env.postgres_URI;
 
 const pool = new Pool({ connectionString: url, });
