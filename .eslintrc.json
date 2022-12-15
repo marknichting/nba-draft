@@ -2,7 +2,8 @@
     "env": {
         "browser": true,
         "es2021": true,
-        "node": true
+        "node": true,
+        "jest": true
     },
     "extends": [
         "eslint:recommended",
@@ -15,6 +16,14 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
+    "overrides": [
+        {
+            "files":["./client/components/__tests__/**"],
+            "plugins": ["jest"],
+            "extends":["plugin:jest/recommended"],
+            "rules": {}
+        }
+    ],
     "plugins": [
         "react"
     ],
