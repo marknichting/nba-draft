@@ -19,7 +19,7 @@ module.exports = {
       template: path.resolve(__dirname, '/client/template.html'),
       filename: 'index.html'
     }),
-    new NodePolyfillPlugin(),
+    new NodePolyfillPlugin()
   ],
 
   module: {
@@ -29,8 +29,16 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
-          "presets": ["@babel/preset-env","@babel/preset-react" ]
-        }
+          "presets": [["@babel/preset-env", {targets: {node: "current"}}],"@babel/preset-react" ],
+        },
+      },
+       {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'babel-jest',
+        options: {
+          "presets": ["@babel/preset-env","@babel/preset-react" ],
+        },
       },
       {
         test: /\.css$/,
