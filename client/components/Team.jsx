@@ -25,7 +25,7 @@ function Team(props) {
       for (const key in savedPlayers[i]) {
         data.push(<td className="team-column" key={keys--}>{savedPlayers[i][key]}</td>)
       }
-      rows.push(<tr className="team-data" key={keys--}>{data}</tr>);
+      rows.push(<tr className="team-data" key={keys--} data-testid='team-row'>{data}</tr>);
     }
   }
 

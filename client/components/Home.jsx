@@ -19,9 +19,7 @@ function Home() {
   function search() {
     console.log('search function invoked!')
     const searchBar = document.querySelector('#search-bar');
-    // console.dir(searchBar.value);
     const name = searchBar.value.trim().replace(' ', '+');
-    // console.log('reformatted name: ', name)
     fetch(`api/playerStats?name=${name}`)
       .then(res => res.json())
       .then(data => {
@@ -62,12 +60,12 @@ function Home() {
   }
 
   function getTeam() {
+    console.log('getTeam executed')
     fetch('api/getTeam')
       .then(res => res.json())
       .then(data => {
-        // change state 
+        console.log(data)
         changeSaved(data);
-        // console.log('state updated!')
       })
       .catch(err => console.log(err));
   }
