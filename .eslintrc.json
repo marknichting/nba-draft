@@ -16,6 +16,8 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
+
+    // the following allows for the eslint rules for testing to only be applied to the testing files in specified folder
     "overrides": [
         {
             "files":["./client/components/__tests__/**"],
