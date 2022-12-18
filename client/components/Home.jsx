@@ -15,7 +15,7 @@ function Home() {
     getTeam();
   }, [savedPlayers.length])
 
-
+  // search function queries API, cleans the returned data and saves in state
   function search() {
     console.log('search function invoked!')
     const searchBar = document.querySelector('#search-bar');
@@ -42,6 +42,7 @@ function Home() {
       .catch(err => console.log(err))
   }
 
+  // save functionality saves a searched player to 'your team' section by saving player data in the database
   function save() {
     console.log('save function invoked!')
     // make a request to server with player stats
@@ -59,16 +60,20 @@ function Home() {
       .catch(err => console.log(err))
   }
 
+
   function getTeam() {
+    // function will be executed one upon component render
     console.log('getTeam executed')
     fetch('api/getTeam')
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        // changing state with hooks method to reflect the information received from the server/DB. data return will reflect an array of objects where each object represents a saved player and their stats
         changeSaved(data);
       })
       .catch(err => console.log(err));
   }
+
+  // deletePlayer will delete a player from 'your team' by removing them from the database
   function deletePlayer(player) {
     fetch(`api/delete?player=${player}`, {
       method: 'POST',
