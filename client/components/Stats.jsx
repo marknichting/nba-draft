@@ -4,10 +4,13 @@ import PropTypes from 'prop-types';
 
 function Stats(props) {
   let keys = 100;
+  // create column headers for the search results table
   const headers = [];
   for (const head of props.columnNames) {
     headers.push(<th key={keys++}> {head} </th>);
   }
+
+  // create a row for the player resulting from the search
   const player = []
   for (const stat in props.playerStats) {
     player.push(<td key={keys++} className="search-column">{props.playerStats[stat]}</td>)

@@ -1,3 +1,4 @@
+// added to allow transpilation for jest tests for JSX and to enable es modules 
 {
   "plugins": ["@babel/plugin-syntax-jsx"],
   "presets": ["@babel/preset-env", "@babel/preset-react"]

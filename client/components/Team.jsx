@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 function Team(props) {
   let keys = -1;
   const elArr = [];
+  // create an array of column headers for the table
   for (const key of props.columnNames) {
     elArr.push(<th className="table-head" key={key}>{key}</th>)
   }
 
-  // console.log('Team: ', props.savedPlayers)
-  // create rows and fill out columns for each player
+  // create rows for the table and fill out columns for each player
   const savedPlayers = props.savedPlayers;
  
   const rows = [];
@@ -22,6 +22,7 @@ function Team(props) {
         console.log( name)
         props.deletePlayer(name);
       }}>delete</button></td>)
+      // inner for loop fills out all of the columns for one player/row
       for (const key in savedPlayers[i]) {
         data.push(<td className="team-column" key={keys--}>{savedPlayers[i][key]}</td>)
       }
