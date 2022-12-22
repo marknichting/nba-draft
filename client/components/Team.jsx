@@ -2,17 +2,15 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 
-function Team(props) {
+function Team({columnNames, deletePlayer, savedPlayers}) {
   let keys = -1;
   const elArr = [];
   // create an array of column headers for the table
-  for (const key of props.columnNames) {
+  for (const key of columnNames) {
     elArr.push(<th className="table-head" key={key}>{key}</th>)
   }
-
+  console.log('saved players: ', savedPlayers);
   // create rows for the table and fill out columns for each player
-  const savedPlayers = props.savedPlayers;
- 
   const rows = [];
   if (savedPlayers[0] !== undefined) {
     for (let i = 0; i < savedPlayers.length; i++ ) {
@@ -20,7 +18,7 @@ function Team(props) {
       data.push(<td key={keys--}><button onClick={() => {
         let name =savedPlayers[i].name;
         console.log( name)
-        props.deletePlayer(name);
+        deletePlayer(name);
       }}>delete</button></td>)
       // inner for loop fills out all of the columns for one player/row
       for (const key in savedPlayers[i]) {
