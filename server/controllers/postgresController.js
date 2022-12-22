@@ -1,8 +1,7 @@
 const axios = require('axios');
 const controller = {};
-const db = require('./models/authenticaionModel.js');
-const db2 = require('./models/playersModel');
-  
+const db = require('../models/authenticaionModel.js');
+
 
 controller.getPlayerStats = function (req, mwRes, next) {
   console.log('invoked getPlayerStats');
