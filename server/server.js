@@ -8,11 +8,7 @@ const mongoController = require('./controllers/mongoController.js');
 app.use(express.json());
 
 // routes
-app.get('/playerStats', postgresController.getPlayerStats,(req, res) => {
-    res.status(200).send(res.locals.stats);
-  })
-  
-  
+
 // handles request route for initial html page
 app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname,'../dist/index.html'));
@@ -24,12 +20,16 @@ app.get('/bundle.js', (req, res) => {
 })
 
 
-// production route
-app.post('/save', postgresController.saveToDB ,(req, res) => {
-    res.status(200).send('dont know what to send yet :)')
+// route to make 
+app.get('/playerStats', postgresController.getPlayerStats,(req, res) => {
+    res.status(200).send(res.locals.stats);
+  })
+  
+app.post('/save', mongoController.saveToDB ,(req, res) => {
+  res.status(200).send('dont know what to send yet :)')
 })
-  
-  
+
+
 // route for getting the players that have been saved to the team    
 app.get('/getTeam', postgresController.getTeam, (req, res) => {
   res.status(200).json(res.locals.team);
