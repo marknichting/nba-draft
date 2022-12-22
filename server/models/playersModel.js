@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
-// require('dotenv').config();
 const url = process.env.mongo_URI;
 console.log(url)
 mongoose.connect(url, { useNewUrlParser: true });

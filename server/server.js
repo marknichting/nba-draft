@@ -4,59 +4,42 @@ const path = require('path');
 const postgresController = require('./controllers/postgresController.js');
 const mongoController = require('./controllers/mongoController.js');
 
-// parse body
+// parse body of http request
 app.use(express.json());
-// ??? something else we need to do to every request?
 
 // routes
-//handles route for request to API
-// production route handler
-// app.get('/playerStats', postgresController.getPlayerStats,(req, res) => {
-  //   res.status(200).send(res.locals.stats);
-  // })
-  
-  // dev route handler
-  app.get('/api/playerStats', postgresController.getPlayerStats, (req, res) => {
-    console.log('this is from dev server proxy');
+app.get('/playerStats', postgresController.getPlayerStats,(req, res) => {
     res.status(200).send(res.locals.stats);
   })
   
-  // handles request route for initial html page
-  app.get('/', (req, res) => {
-    res.status(200).sendFile(path.join(__dirname,'../dist/index.html'));
-  })
   
-  // handles html pages request for bundle.js file
-  app.get('/bundle.js', (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, '../dist/bundle.js'));
-  })
+// handles request route for initial html page
+app.get('/', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname,'../dist/index.html'));
+})
+
+// handles html pages request for bundle.js file
+app.get('/bundle.js', (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, '../dist/bundle.js'));
+})
+
+
+// production route
+app.post('/save', postgresController.saveToDB ,(req, res) => {
+    res.status(200).send('dont know what to send yet :)')
+})
   
   
-  // production route
-  // app.post('/save', postgresController.saveToDB ,(req, res) => {
-    //   res.status(200).send('dont know what to send yet :)')
-    // })
-    // dev route
-    app.post('/api/save', postgresController.saveToDB ,(req, res) => {
-      res.status(200).send('dont know what to send yet :)')
-    })
-    
-    
-    // route for getting the players that have been saved to the team
-    // production
-    
-    // dev
-    app.get('/api/getTeam', postgresController.getTeam, (req, res) => {
-      res.status(200).json(res.locals.team);
-    })
-    
-    
-    // delete player from the team
-    // production
-    // dev
-    app.post('/api/delete', postgresController.deletePlayer, (req, res) => {
-      res.status(200).send('player deleted')
-    })
+// route for getting the players that have been saved to the team    
+app.get('/getTeam', postgresController.getTeam, (req, res) => {
+  res.status(200).json(res.locals.team);
+})
+  
+  
+// delete player from the team
+app.post('/delete', postgresController.deletePlayer, (req, res) => {
+  res.status(200).send('player deleted')
+})
 
 
 // error not found
