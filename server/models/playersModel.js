@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
-// require('dotenv').config();
 const url = process.env.mongo_URI;
 console.log(url)
 mongoose.connect(url, { useNewUrlParser: true });
@@ -30,13 +29,13 @@ const playersSchema = Schema({
   ftAttempted: Number,
   ftPercentage: Number,
   threePointersMade: Number,
-  Reb: Number,
-  Ast: Number,
-  Stl: Number,
-  Blk: Number,
-  TO: Number,
-  Pts: Number,
-  Health: String,
+  rebounds: Number,
+  assists: Number,
+  steals: Number,
+  blocks: Number,
+  turnovers: Number,
+  points: Number,
+  health: String,
   nbaTeam: String,
   fantasyTeam: String,
 })

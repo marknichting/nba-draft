@@ -2,28 +2,27 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 
-function Team(props) {
+function Team({columnNames, deletePlayer, savedPlayers}) {
   let keys = -1;
-  const elArr = [];
-  // create an array of column headers for the table
-  for (const key of props.columnNames) {
-    elArr.push(<th className="table-head" key={key}>{key}</th>)
-  }
 
+  const columnHeadersArr = [];
+  // create an array of column headers for the table
+  for (const key in savedPlayers[0]) {
+    if(key === '_id' || key == '__v' ) continue;
+    columnHeadersArr.push(<th className="table-head" key={key}>{key}</th>)
+  }
   // create rows for the table and fill out columns for each player
-  const savedPlayers = props.savedPlayers;
- 
   const rows = [];
   if (savedPlayers[0] !== undefined) {
     for (let i = 0; i < savedPlayers.length; i++ ) {
       const data = [];
       data.push(<td key={keys--}><button onClick={() => {
         let name =savedPlayers[i].name;
-        console.log( name)
-        props.deletePlayer(name);
+        deletePlayer(name);
       }}>delete</button></td>)
       // inner for loop fills out all of the columns for one player/row
       for (const key in savedPlayers[i]) {
+        if(key === '_id' || key == '__v' ) continue;
         data.push(<td className="team-column" key={keys--}>{savedPlayers[i][key]}</td>)
       }
       rows.push(<tr className="team-data" key={keys--} data-testid='team-row'>{data}</tr>);
@@ -37,7 +36,7 @@ function Team(props) {
           <thead className="team-head">
             <tr>
               <th>action</th>
-              {elArr}    
+              {columnHeadersArr}    
             </tr>
           </thead>
           <tbody>
