@@ -7,8 +7,8 @@ const mongoController = require('./controllers/mongoController.js');
 // parse body of http request
 app.use(express.json());
 
-// routes
 
+// routes
 // handles request route for initial html page
 app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname,'../dist/index.html'));
