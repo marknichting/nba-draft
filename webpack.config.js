@@ -46,7 +46,7 @@ module.exports = {
     compress: true,
     // host?
     proxy: {
-      '/api': 'http://localhost:3000'
+      '/': 'http://localhost:3000'
     },
     // do you need to assing a port? NO default is 8080. you can if you want to though using port property
     // port: 8080,
