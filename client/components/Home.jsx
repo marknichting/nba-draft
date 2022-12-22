@@ -63,7 +63,6 @@ function Home() {
 
   function getTeam() {
     // function will be executed one upon component render
-    console.log('getTeam executed')
     fetch('/getTeam')
       .then(res => res.json())
       .then(data => {

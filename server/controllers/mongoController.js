@@ -3,34 +3,6 @@ const players = require('../models/playersModel');
 const mongoController = {};
 
 
-// testing saving a player
-// players.create({
-  // name: 'Stephen Curry',
-  // position: 'G',
-  // schedule: ['2022-12-22', '12/23/2022'],
-  // minutes: 34.2,
-  // fgMade: 8.29,
-  // fgAttempted: 18.97,
-  // fgPercentage: 0.437,
-  // ftMade: 4.26,
-  // ftAttempted: 4.62,
-  // ftPercentage: 0.923,
-  // threePointersMade:4.43,
-  // rebounds: 5.23,
-  // assists: 6.29,
-  // steals: 1.34,
-  // blocks: 0.34,
-  // turnovers: 3.23,
-  // points: 25.28,
-  // health: 'healthy',
-  // nbaTeam: 'Golden State Warriors',
-  // fantasyTeam: 'Z'}, (err, player) => {
-  // if(err) console.log(err);
-//   console.log(player);
-// })
-
-
-
 mongoController.saveToDB = function (req, res,next) {
   console.log('inside of saveToDB middleware');
   // add something to DB
@@ -58,8 +30,26 @@ mongoController.saveToDB = function (req, res,next) {
     nbaTeam: team,
     fantasyTeam: 'unavailable' //current data set does not provide
   }, (err, player) => {
-    if(err) console.log(err);
+    if (err) next({err: err});
     console.log(player);
+    next();
+  })
+}
+
+
+mongoController.getTeam = function (req, res, next) {
+  players.find({}, (err, result) => {
+    if (err) next({ err: err });
+    res.locals.team = result;
+    next();
+  })
+}
+
+mongoController.deletePlayer = function (req, res, next) {
+  const name = [req.query.player];
+  players.findOneAndDelete({name}, (err, player) => {
+    if (err) next({ err: err });
+    next();  
   })
 }
 

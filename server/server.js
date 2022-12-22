@@ -31,13 +31,13 @@ app.post('/save', mongoController.saveToDB ,(req, res) => {
 
 
 // route for getting the players that have been saved to the team    
-app.get('/getTeam', postgresController.getTeam, (req, res) => {
+app.get('/getTeam', mongoController.getTeam, (req, res) => {
   res.status(200).json(res.locals.team);
 })
   
   
 // delete player from the team
-app.post('/delete', postgresController.deletePlayer, (req, res) => {
+app.post('/delete', mongoController.deletePlayer, (req, res) => {
   res.status(200).send('player deleted')
 })
 
