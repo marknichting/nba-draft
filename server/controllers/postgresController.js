@@ -1,6 +1,6 @@
 const axios = require('axios');
 const controller = {};
-const db = require('../models/authenticaionModel.js');
+const db = require('../models/postgresModel.js');
 
 
 controller.getPlayerStats = function (req, mwRes, next) {

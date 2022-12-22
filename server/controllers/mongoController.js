@@ -38,9 +38,9 @@ mongoController.saveToDB = function (req, res,next) {
 
 
 mongoController.getTeam = function (req, res, next) {
-  players.find({}, (err, result) => {
+  players.find({}, (err, team) => {
     if (err) next({ err: err });
-    res.locals.team = result;
+    res.locals.team = team;
     next();
   })
 }
