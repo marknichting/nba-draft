@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const controller = require('./controller.js');
+const postgresController = require('./controllers/postgresController.js');
+const mongoController = require('./controllers/mongoController.js');
 
 // parse body
 app.use(express.json());
@@ -10,12 +11,12 @@ app.use(express.json());
 // routes
 //handles route for request to API
 // production route handler
-// app.get('/playerStats', controller.getPlayerStats,(req, res) => {
+// app.get('/playerStats', postgresController.getPlayerStats,(req, res) => {
   //   res.status(200).send(res.locals.stats);
   // })
   
   // dev route handler
-  app.get('/api/playerStats', controller.getPlayerStats, (req, res) => {
+  app.get('/api/playerStats', postgresController.getPlayerStats, (req, res) => {
     console.log('this is from dev server proxy');
     res.status(200).send(res.locals.stats);
   })
@@ -32,11 +33,11 @@ app.use(express.json());
   
   
   // production route
-  // app.post('/save', controller.saveToDB ,(req, res) => {
+  // app.post('/save', postgresController.saveToDB ,(req, res) => {
     //   res.status(200).send('dont know what to send yet :)')
     // })
     // dev route
-    app.post('/api/save', controller.saveToDB ,(req, res) => {
+    app.post('/api/save', postgresController.saveToDB ,(req, res) => {
       res.status(200).send('dont know what to send yet :)')
     })
     
@@ -45,7 +46,7 @@ app.use(express.json());
     // production
     
     // dev
-    app.get('/api/getTeam', controller.getTeam, (req, res) => {
+    app.get('/api/getTeam', postgresController.getTeam, (req, res) => {
       res.status(200).json(res.locals.team);
     })
     
@@ -53,7 +54,7 @@ app.use(express.json());
     // delete player from the team
     // production
     // dev
-    app.post('/api/delete', controller.deletePlayer, (req, res) => {
+    app.post('/api/delete', postgresController.deletePlayer, (req, res) => {
       res.status(200).send('player deleted')
     })
 
